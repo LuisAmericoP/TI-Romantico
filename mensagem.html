@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Surpresa pra Você 💘</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      color: #000000;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .heart {
+      font-size: 4em;
+      animation: pulse 1s infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); color: #ff3366; }
+    }
+
+    .mensagem {
+      font-size: 1.4em;
+      min-height: 100px;
+      white-space: pre-wrap;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.1em;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #e91e63;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="heart">💖</div>
+    <div class="mensagem" id="mensagem"></div>
+    <button onclick="iniciarSurpresa()">Ouvir Surpresa 💝</button>
+    <audio id="musica" loop>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>
+
+  <script>
+    const texto = "Oi, meu amor...\n\nSó queria dizer o quanto você é especial pra mim.\nSeu sorriso é meu abrigo, sua voz é minha melodia favorita.\nTe amo mais do que palavras podem explicar. 💘";
+    let i = 0;
+
+    function iniciarSurpresa() {
+      const musica = document.getElementById('musica');
+      const mensagem = document.getElementById('mensagem');
+      musica.play();
+
+      mensagem.innerHTML = '';
+      i = 0;
+      digitarTexto(texto, mensagem);
+    }
+
+    function digitarTexto(texto, elemento) {
+      if (i < texto.length) {
+        elemento.innerHTML += texto.charAt(i);
+        i++;
+        setTimeout(() => digitarTexto(texto, elemento), 50); // Velocidade da digitação
+      }
+    }
+  </script>
+
+</body>
+</html>
